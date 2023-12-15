@@ -1,0 +1,58 @@
+Quelle 1:
+
+Git best practices
+
+- Nicht git push sofort zum master, sondern branchen
+
+- Jedes Teammitglied sollte an einen separaten feature branch arbeiten, dadurch können die Teammitglieder Änderungen vornehmen ohne Auswirkungen auf den main source code
+In branches ist es einfacher Veränderungen nachzuvollziehen
+Wenn der Code bereit ist kann er dann in den master branch gemerged werden
+
+- Die commit messages sollten kurz, aber detailliert sein
+Nur so kann der commit von den Teammitgliedern verstanden werden
+Fragen, die der commit beantworten sollte: Warum wurde diese Veränderung vorgenommen? Wie nimmt es das Problem an? Welche Auswirkung hat es?
+
+- Reviewen des Codes
+Möglichst häufig den working branch neu basieren
+Damit möglichst wenig bugs auftreten oder Konflikte mit dem upstream branch
+Git checkout (upstream) - git pull - git checkout - git rebase (upstream)
+
+
+Quelle 2: 
+
+- Commits sollten kurz sein, aber oft vorkommen und detailliert sein
+Hilft den Code zu verstehen, besonders wenn Probleme auftreten
+Die commit message sollte nicht weniger oder gleich drei Worte sein
+
+- Feature-Branch-Workflow als bestes Branching-Modell für die Teamarbeiten
+Jedes neue Feature soll einen eignen Branch bekommen, nicht auf dem main branch
+Sodass der main branch keinen unfertigen Code enthält
+Nach dem Prinzip: Eins nach dem anderen, Übersicht behalten (auch für andere)
+Ein neues Feature = Ein neuer Branch
+
+- Wenn alles fertig ist: Pull request und git merge mit main branch
+Bei kleineren Gruppen den Code in einem Repository
+Der Code bleibt in sync
+
+Quelle 3: 
+
+- Benutzen einer gitignore Datei
+Repository ist aufgeräumter
+Unerwünschte Dateien werden ignoriert
+
+- Rebase nutzen
+Verlauf des Projekts ist klarer nachzuvollziehen
+
+- Diff nutzen
+Zeigt Differenzen zwischen zwei inputs
+Hilft Veränderungen nachzuvollziehen
+Hilft bei der Entscheidung zwischen rebase oder merge
+
+
+Basierend auf der Recherche würde ich für die Gruppenarbeit zunächst das Feature-Branch-Modell nutzen mit einem zentralen repository, da es dem Team ermöglicht an mehreren Features gleichzeitig zu arbeiten und man so eine bessere Übersicht hat über was zu tun ist. Zudem ermöglichen die Pull-requests der branches die Diskussion über den Code und Probleme. Jedes Teammitglied kann so an dem eigenen Branch arbeiten und sich gegenseitig austauschen. Man arbeitet sich so Schritt für Schritt produktiv an das Ziel. Dieses Modell hat keine Auswirkungen auf unseren main code. Die feature branches sollten immer erst in den repository gepusht werden, sodass das feature dann mit den anderen geteilt wird. Wir haben durch die branches die Möglichkeit der Pull-requests, womit wir Änderungen diskutieren können. Also würde ich in der <gruppenarbeit immer so vorgehen, dass vor dem mergen mit dem master branch, das feature in den zentralen Server gepusht wird und ein Pull-request erstellt werden soll. 
+Desweiteren würde ich eine gitignore Datei nutzen, um sicherzugehen, dass keine user settings oder unerwünschten Dateien das Projekt beeinflussen. Ich würden ebenso Regeln oder Fragestellungen festlegen für die Definition der commit messages, damit diese einheitlich und verständlich sind für jede Person im Team. Nur so kann jeder in der Gruppe, den Code von den jeweils anderen nachvollziehen. Beispielhafte Regeln wären: 
+Mind. 5 Wörter und nicht über 25 Wörter
+Inhalt: Grund der vorgenommenen Veränderung - Bezug zum Problem - Auswirkung
+Dies ist ebenfalls wichtig für den nächsten Punkt, möglichst regelmäßig den Code reviewen. Dies dient dazu, dass Probleme erst gar nicht auftreten oder diese möglichst schnell und produktiv gelöst werden. Ebenso sollte rebase regelmäßig genutzt werden, da es uns hilft den Verlauf des Codes noch einmal zu sehen und zu veranschaulichen und so ebenfalls bugs aus dem weg gehen können, besonders aber auch Probleme mit dem upstream branch.
+
+
