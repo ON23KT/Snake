@@ -1,3 +1,6 @@
+//Programmreaktionen & Gameover Stopp
+
+
 //alle 100 milisekundend wird die spielfläche sozusagen neugestaltet, durch repaint wird draw immer und immer wieder
 	//ausgeführt
 	@Override
