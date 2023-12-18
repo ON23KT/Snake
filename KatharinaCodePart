@@ -1,3 +1,5 @@
+// Rastererstellung, Farbgebung, Körperzuwachs 
+
 public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
