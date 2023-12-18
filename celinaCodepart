@@ -1,0 +1,60 @@
+public void placeFood()
+	{
+		food.x = random.nextInt(boardWidth/tileSize); //600/24=24 gibt uns eine Zufallszahl/Positions zwischen 0 und 24 aus
+		food.y = random. nextInt(boardHeight/tileSize);
+	}
+	// diese Funktionen werden alle 100 Milisekunden geupdatet bzw. erneut durchgeführt (siehe gameLoop)
+	
+	public boolean collision(Tile tile1, Tile tile2)
+	{
+		//game over wenn der Kopf die Wand berührt; tile1 = Kopf tile2 = Wand diese werden überprüft
+		return tile1.x == tile2.x && tile1.y == tile2.y;
+	}
+	
+	public void move()
+	{
+		//essen essen
+		if (collision(snakeHead, food))
+		{
+			snakeBody.add(new Tile(food.x, food.y));
+			placeFood();
+		}
+		
+		//BodyParts bewegen sich jetzt mit dem Kopf, jeder Tile muss sich bewegen bevor der Kopf sich bewegt
+		for (int i = snakeBody.size()-1; i >=0; i--)
+		{
+			Tile snakePart = snakeBody.get(i);
+			if (i==0)
+			{
+				snakePart.x = snakeHead.x;
+				snakePart.y = snakeHead.y;
+			}
+			else
+			{
+				Tile prevSnakePart = snakeBody.get(i-1);
+				snakePart.x = prevSnakePart.x;
+				snakePart.y = prevSnakePart.y;
+			}
+		}
+		
+		//Snake Head
+		snakeHead.x +=velocityX;
+		snakeHead.y += velocityY;
+		
+		//gameOver condition
+		for (int i = 0; i <  snakeBody.size(); i++)
+		{
+			Tile snakePart = snakeBody.get(i);
+			//Kollision mit Kopf
+			if (collision(snakeHead,snakePart))
+			{
+				gameOver = true;
+			}
+		}
+		if (snakeHead.x*tileSize < 0 || snakeHead.x*tileSize > boardWidth || 
+			snakeHead.y*tileSize < 0 || snakeHead.y*tileSize > boardHeight)
+		{
+			gameOver = true;
+		}
+	}
+	
