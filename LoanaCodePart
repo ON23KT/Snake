@@ -1,0 +1,56 @@
+//Programmreaktionen & Gameover Stopp
+
+
+//alle 100 milisekundend wird die spielfläche sozusagen neugestaltet, durch repaint wird draw immer und immer wieder
+	//ausgeführt
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		move();
+		repaint();
+		if (gameOver)
+		{
+			gameLoop.stop();
+		}
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e)
+	{
+		//beim Hoch Pfeil bewegt sich die Snake nach oben; nach dem && ist dazu da das Snake nicht rückwärts gehen kann
+		if (e.getKeyCode() == KeyEvent.VK_UP && velocityY !=1)
+		{
+			velocityX = 0;
+			velocityY = -1;
+		}
+		else if (e.getKeyCode()== KeyEvent.VK_DOWN && velocityY !=-1)
+		{
+			velocityX = 0;
+			velocityY = 1;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_LEFT && velocityX !=1)
+		{
+			velocityX = -1;
+			velocityY = 0;
+		}
+		else if (e.getKeyCode()== KeyEvent.VK_RIGHT && velocityX !=-1)
+		{
+			velocityX = 1;
+			velocityY = 0;
+		}
+	}
+	//brauchen ma net aber müssen wir definieren deswegen sind die trz da
+	@Override
+	public void keyTyped(KeyEvent e)
+	{
+		
+	}
+	
+
+	
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
+		throw new UnsupportedOperationException("Unimpleted method 'keyReleased'");
+	}
+}
